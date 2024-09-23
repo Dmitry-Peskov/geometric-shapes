@@ -6,15 +6,16 @@ Number: TypeAlias = int | float
 
 class Point:
 
-    def __init__(self, x: Number, y: Number):
+    def __init__(self, name: str, x: Number, y: Number):
+        self.name = name
         self.x = x
         self.y = y
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}(x={self.x}, y={self.y})"
+        return f"{self.__class__.__name__}(name={self.name}, x={self.x}, y={self.y})"
 
     def __str__(self) -> str:
-        return f"Точка({self.x}, {self.y})"
+        return f"{self.name}({self.x}, {self.y})"
 
     def __eq__(self, other: Point) -> bool:
         if not isinstance(other, Point):
@@ -29,8 +30,6 @@ class Point:
     def distance_to(self, point: Point) -> float:
         """
         Вычислить расстояние от текущей точки до любой другой на плоскости.
-
-
         :param point: произвольная точка на плоскости
         :return: расстояние между точками
         """
