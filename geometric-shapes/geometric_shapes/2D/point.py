@@ -25,3 +25,15 @@ class Point:
         if not isinstance(other, Point):
             raise TypeError(f"Не корректный тип {type(other)}. Операнд справа должен иметь тип Point")
         return self.x != other.x or self.y != other.y
+
+    def distance_to(self, point: Point) -> float:
+        """
+        Вычислить расстояние от текущей точки до любой другой на плоскости.
+
+
+        :param point: произвольная точка на плоскости
+        :return: расстояние между точками
+        """
+        if not isinstance(point, Point):
+            raise TypeError(f"Не корректный тип {type(point)}. Для вычисления расстояния между точками, аргумент должен иметь тип Point")
+        return ((self.x - point.x)**2 - (self.y - point.y)**2) ** 0.5
