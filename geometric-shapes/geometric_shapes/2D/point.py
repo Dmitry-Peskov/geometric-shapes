@@ -1,5 +1,5 @@
+from __future__ import annotations
 from typing import TypeAlias
-
 
 Number: TypeAlias = int | float
 
@@ -15,3 +15,13 @@ class Point:
 
     def __str__(self) -> str:
         return f"Точка({self.x}, {self.y})"
+
+    def __eq__(self, other: Point) -> bool:
+        if not isinstance(other, Point):
+            raise TypeError(f"Не корректный тип {type(other)}. Операнд справа должен иметь тип Point")
+        return self.x == other.x and self.y == other.y
+
+    def __ne__(self, other: Point) -> bool:
+        if not isinstance(other, Point):
+            raise TypeError(f"Не корректный тип {type(other)}. Операнд справа должен иметь тип Point")
+        return self.x != other.x or self.y != other.y
